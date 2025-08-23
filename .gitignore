@@ -1,0 +1,12 @@
+# 环境变量文件
+.env
+
+# 依赖目录
+node_modules/
+
+# 日志文件
+*.log
+
+# 临时文件
+.tmp/
+.cache/

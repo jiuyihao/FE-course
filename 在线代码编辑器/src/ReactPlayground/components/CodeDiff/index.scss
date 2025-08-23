@@ -1,0 +1,87 @@
+.code-diff-container {
+  margin: 16px 0;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  
+  .ant-card-head {
+    background: #fafafa;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .diff-editor-wrapper {
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    
+    .monaco-editor {
+      .margin {
+        background-color: #f8f8f8;
+      }
+      
+      .monaco-diff-editor .diffViewport {
+        scrollbar-width: thin;
+      }
+    }
+  }
+  
+  .diff-actions {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+    border-top: 1px solid #f0f0f0;
+    background: #fafafa;
+    
+    .ant-btn {
+      min-width: 140px;
+      height: 40px;
+      font-weight: 500;
+      
+      &.ant-btn-primary {
+        background: #52c41a;
+        border-color: #52c41a;
+        
+        &:hover {
+          background: #73d13d;
+          border-color: #73d13d;
+        }
+      }
+      
+      &.ant-btn-dangerous {
+        &:hover {
+          background: #ff7875;
+          border-color: #ff7875;
+        }
+      }
+    }
+  }
+}
+
+// 暗色主题支持
+.dark {
+  .code-diff-container {
+    background: #1e1e1e;
+    border-color: #3e3e42;
+    
+    .ant-card-head {
+      background: #2d2d30;
+      border-bottom-color: #3e3e42;
+      color: #d4d4d4;
+    }
+    
+    .diff-editor-wrapper {
+      border-color: #3e3e42;
+      
+      .monaco-editor {
+        .margin {
+          background-color: #2d2d30;
+        }
+      }
+    }
+    
+    .diff-actions {
+      background: #2d2d30;
+      border-top-color: #3e3e42;
+    }
+  }
+}

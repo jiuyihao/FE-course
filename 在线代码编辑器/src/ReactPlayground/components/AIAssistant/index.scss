@@ -1,0 +1,413 @@
+.ai-assistant {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  
+  .ai-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    font-weight: 500;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+  .session-info {
+    padding: 8px 16px;
+    background: #f0f9ff;
+    border-bottom: 1px solid #e6f7ff;
+    font-size: 12px;
+    color: #666;
+    
+    .session-id {
+      font-family: monospace;
+    }
+  }
+  
+  .messages-container {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 16px;
+    max-height: calc(100vh - 200px); // 确保有明确的高度限制
+    
+    // 自定义滚动条样式
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 4px;
+      
+      &:hover {
+        background: #a8a8a8;
+      }
+    }
+    
+    .welcome-message {
+      text-align: center;
+      padding: 40px 20px;
+      color: #666;
+      
+      h3 {
+        margin: 16px 0;
+        color: #333;
+      }
+      
+      ul {
+        text-align: left;
+        display: inline-block;
+        margin-top: 16px;
+        
+        li {
+          margin: 8px 0;
+        }
+      }
+    }
+    
+    .message {
+      margin-bottom: 16px;
+      
+      .message-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        
+        .message-time {
+          margin-left: 8px;
+          font-size: 12px;
+          color: #999;
+        }
+      }
+      
+      .message-content {
+        margin-left: 32px;
+        
+        .message-text {
+          line-height: 1.6;
+          
+          .code-block {
+            background: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 12px;
+            margin: 8px 0;
+            overflow-x: auto;
+            
+            code {
+              font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+              font-size: 13px;
+            }
+          }
+        }
+        
+        .code-actions {
+          margin-top: 12px;
+          
+          .code-block-card {
+            margin-bottom: 8px;
+            
+            .code-block-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 8px;
+              
+              .code-block-actions {
+                display: flex;
+                gap: 8px;
+              }
+            }
+            
+            .code-preview {
+              background: #f6f8fa;
+              border: 1px solid #e1e4e8;
+              border-radius: 4px;
+              padding: 8px;
+              margin: 0;
+              font-size: 12px;
+              max-height: 100px;
+              overflow: hidden;
+            }
+          }
+        }
+      }
+      
+      &.user {
+        .message-content {
+          background: #e6f7ff;
+          padding: 12px;
+          border-radius: 8px;
+          border-left: 3px solid #1890ff;
+        }
+      }
+      
+      &.assistant {
+        .message-content {
+          background: #f6ffed;
+          padding: 12px;
+          border-radius: 8px;
+          border-left: 3px solid #52c41a;
+        }
+      }
+    }
+    
+    .loading-message {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      color: #666;
+    }
+  }
+  
+  .input-container {
+    padding: 16px;
+    border-top: 1px solid #f0f0f0;
+    background: #fafafa;
+    
+    .ant-input {
+      margin-bottom: 8px;
+    }
+    
+    .ant-btn {
+      width: 100%;
+    }
+  }
+}
+
+// 暗色主题支持
+.dark {
+  .ai-assistant {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    
+    .ai-header {
+      background: #2d2d30;
+      border-bottom-color: #3e3e42;
+      color: #d4d4d4;
+    }
+    
+    .session-info {
+      background: #1a2332;
+      border-bottom-color: #2a3441;
+      color: #8cc8ff;
+    }
+    
+    .messages-container {
+      // 暗色主题滚动条样式
+      &::-webkit-scrollbar-track {
+        background: #2d2d30;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: #555;
+        
+        &:hover {
+          background: #666;
+        }
+      }
+      
+      .message {
+        &.user .message-content {
+          background: #0e2a44;
+          border-left-color: #1890ff;
+        }
+        
+        &.assistant .message-content {
+          background: #162312;
+          border-left-color: #52c41a;
+        }
+        
+        .message-text .code-block {
+          background: #2d2d30;
+          border-color: #3e3e42;
+          color: #d4d4d4;
+        }
+        
+        .code-actions .code-block-card {
+          .code-preview {
+            background: #2d2d30;
+            border-color: #3e3e42;
+            color: #d4d4d4;
+          }
+        }
+      }
+    }
+    
+    .input-container {
+      background: #2d2d30;
+      border-top-color: #3e3e42;
+    }
+  }
+}
+
+.markdown-content {
+  line-height: 1.6;
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin: 16px 0 8px 0;
+    font-weight: 600;
+    
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  
+  h1 { font-size: 1.5em; }
+  h2 { font-size: 1.3em; }
+  h3 { font-size: 1.1em; }
+  
+  p {
+    margin: 8px 0;
+    
+    &:first-child {
+      margin-top: 0;
+    }
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  ul, ol {
+    margin: 8px 0;
+    padding-left: 24px;
+    
+    li {
+      margin: 4px 0;
+    }
+  }
+  
+  blockquote {
+    margin: 12px 0;
+    padding: 8px 16px;
+    border-left: 4px solid #ddd;
+    background-color: #f9f9f9;
+    color: #666;
+    
+    p {
+      margin: 0;
+    }
+  }
+  
+  code {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+  }
+  
+  pre {
+    background-color: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 16px;
+    margin: 12px 0;
+    overflow-x: auto;
+    
+    code {
+      background: none;
+      padding: 0;
+      border-radius: 0;
+      font-size: 0.85em;
+    }
+  }
+  
+  table {
+    border-collapse: collapse;
+    margin: 12px 0;
+    width: 100%;
+    
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    
+    th {
+      background-color: #f6f8fa;
+      font-weight: 600;
+    }
+  }
+  
+  a {
+    color: #0366d6;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid #e1e4e8;
+    margin: 16px 0;
+  }
+  
+  // 暗色主题适配
+  .dark & {
+    blockquote {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-left-color: #555;
+      color: #ccc;
+    }
+    
+    code {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    pre {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-color: #444;
+    }
+    
+    table {
+      th, td {
+        border-color: #444;
+      }
+      
+      th {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+    }
+    
+    hr {
+      border-top-color: #444;
+    }
+  }
+}
+
+.code-diff-modal {
+  .ant-modal-content {
+    padding: 0;
+  }
+  
+  .ant-modal-body {
+    padding: 0;
+  }
+}
+
+// 暗色主题支持
+.dark {
+  .code-diff-modal {
+    .ant-modal-content {
+      background: #1e1e1e;
+      color: #d4d4d4;
+    }
+  }
+}

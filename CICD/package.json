@@ -1,0 +1,8 @@
+{
+	"type": "module",
+	"dependencies": {
+		"archiver": "^7.0.1",
+		"inquirer": "^12.9.2",
+		"node-ssh": "^13.2.1"
+	}
+}
