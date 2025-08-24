@@ -58,16 +58,18 @@ export default function AIAssistant() {
   const [isLoading, setIsLoading] = useState(false);
   const [diffState, setDiffState] = useState<DiffState>({
     isVisible: false,
-    originalCode: '',
-    modifiedCode: '',
-    language: 'javascript',
-    fileName: '',
-    codeBlock: { language: 'javascript', code: '' }
+    originalCode: "",
+    modifiedCode: "",
+    language: "javascript",
+    fileName: "",
+    codeBlock: { language: "javascript", code: "" },
   });
   const [sessionId, setSessionId] = useState(() => {
     const saved = localStorage.getItem("ai-session-id");
     if (saved) return saved;
-    const newId = `session-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    const newId = `session-${Date.now()}-${Math.random()
+      .toString(36)
+      .substr(2, 9)}`;
     localStorage.setItem("ai-session-id", newId);
     return newId;
   });
@@ -98,10 +100,10 @@ export default function AIAssistant() {
       }, 100);
     };
 
-    window.addEventListener('askAI', handleAskAIEvent as EventListener);
-    
+    window.addEventListener("askAI", handleAskAIEvent as EventListener);
+
     return () => {
-      window.removeEventListener('askAI', handleAskAIEvent as EventListener);
+      window.removeEventListener("askAI", handleAskAIEvent as EventListener);
     };
   }, []);
   const loadSessionHistory = async () => {
@@ -173,7 +175,7 @@ export default function AIAssistant() {
         selectedFileName,
       };
 
-      const response = await fetch("http://localhost:8080/sse", {
+      const response = await fetch("http://123.57.155.100:8080/sse", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -257,12 +259,12 @@ export default function AIAssistant() {
 
     // 只保留最长的代码块（有完整代码的）
     if (blocks.length === 0) return [];
-    
+
     // 找到最长的代码块
     const longestBlock = blocks.reduce((longest, current) => {
       return current.code.length > longest.code.length ? current : longest;
     });
-    
+
     return [longestBlock];
   };
 
@@ -298,10 +300,6 @@ export default function AIAssistant() {
   // 配置marked选项
   useEffect(() => {
     marked.setOptions({
-      highlight: function(code, lang) {
-        // 可以在这里集成代码高亮库，如prism.js或highlight.js
-        return code;
-      },
       breaks: true, // 支持换行
       gfm: true, // 支持GitHub风格的markdown
     });
@@ -312,45 +310,45 @@ export default function AIAssistant() {
     try {
       const htmlContent = marked(content);
       return (
-        <div 
+        <div
           className="markdown-content"
           dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
       );
     } catch (error) {
-      console.error('Markdown解析错误:', error);
+      console.error("Markdown解析错误:", error);
       return <span>{content}</span>;
     }
   };
 
   const showCodeDiff = (codeBlock: CodeBlock) => {
     const currentFile = files[selectedFileName];
-    const originalCode = currentFile?.value || '';
-    const language = currentFile?.language || 'javascript';
-    
+    const originalCode = currentFile?.value || "";
+    const language = currentFile?.language || "javascript";
+
     setDiffState({
       isVisible: true,
       originalCode,
       modifiedCode: codeBlock.code,
       language,
       fileName: selectedFileName,
-      codeBlock
+      codeBlock,
     });
   };
 
   const handleAcceptDiff = () => {
     applyCodeToEditor(diffState.codeBlock);
-    setDiffState(prev => ({ ...prev, isVisible: false }));
-    message.success('代码更改已接受并应用到编辑器');
+    setDiffState((prev) => ({ ...prev, isVisible: false }));
+    message.success("代码更改已接受并应用到编辑器");
   };
 
   const handleRejectDiff = () => {
-    setDiffState(prev => ({ ...prev, isVisible: false }));
-    message.info('代码更改已拒绝');
+    setDiffState((prev) => ({ ...prev, isVisible: false }));
+    message.info("代码更改已拒绝");
   };
 
   const handleCloseDiff = () => {
-    setDiffState(prev => ({ ...prev, isVisible: false }));
+    setDiffState((prev) => ({ ...prev, isVisible: false }));
   };
 
   const renderMessage = (msg: ChatMessage) => {
@@ -367,7 +365,7 @@ export default function AIAssistant() {
         </div>
         <div className="message-content">
           <div className="message-text">
-            {msg.type === 'assistant' ? (
+            {msg.type === "assistant" ? (
               renderMarkdownContent(msg.content)
             ) : (
               <span>{msg.content}</span>
@@ -405,7 +403,10 @@ export default function AIAssistant() {
                     </div>
                   </div>
                   <pre className="code-preview">
-                    <code>{block.code.substring(0, 200)}{block.code.length > 200 ? '...' : ''}</code>
+                    <code>
+                      {block.code.substring(0, 200)}
+                      {block.code.length > 200 ? "..." : ""}
+                    </code>
                   </pre>
                 </Card>
               ))}
@@ -487,7 +488,7 @@ export default function AIAssistant() {
           发送
         </Button>
       </div>
-      
+
       <Modal
         open={diffState.isVisible}
         onCancel={handleCloseDiff}
