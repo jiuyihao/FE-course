@@ -1,17 +1,15 @@
-import { useState } from 'react'
-import './App.css'
+import "./App.css";
+import dayjs from "dayjs";
+import { Calendar, Watermark } from "yihaoji-components";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1>Hello World</h1>
-      <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
+    <Watermark content={["测试水印", "一号机"]}>
+      <div style={{ padding: 16 }}>
+        <Calendar value={dayjs("2024-07-01")} />
       </div>
-    </>
-  )
+    </Watermark>
+  );
 }
 
-export default App
+export default App;

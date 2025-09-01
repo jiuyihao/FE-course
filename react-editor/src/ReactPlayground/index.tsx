@@ -15,7 +15,7 @@ export default function ReactPlayground() {
   return (
     <div className={theme} style={{ height: "100vh" }}>
       <Header />
-      <Allotment defaultSizes={[60, 25, 15]}>
+      <Allotment defaultSizes={[34, 33, 33]}>
         <Allotment.Pane minSize={200}>
           <CodeEditor />
         </Allotment.Pane>

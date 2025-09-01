@@ -175,7 +175,7 @@ export default function AIAssistant() {
         selectedFileName,
       };
 
-      const response = await fetch("http://123.57.155.100:8080/sse", {
+      const response = await fetch("http://123.57.155.100:8081/sse", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
