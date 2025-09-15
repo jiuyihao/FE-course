@@ -1,3 +1,5 @@
+/* eslint-disable */
+// @ts-nocheck
 import "./App.css";
 import dayjs from "dayjs";
 import { Calendar, Watermark } from "yihaoji-components";

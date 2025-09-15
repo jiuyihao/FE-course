@@ -10,7 +10,8 @@ const config = [
     },
     // targetDir:'C:/Users/yihao/Desktop/vite-project/dist', //本地文件路径
     // targetDir: "D:/Code/react-playground/dist", //本地文件路径
-    targetDir: "D:/Code/FE-course/AI", //本地文件路径
+    targetDir:
+      "/Users/yihaoji/Documents/React course/FE-course/react-editor/dist", //本地文件路径
     targetFile: "dist.zip", //本地文件名
     deployDir: "/home/server/", //远程服务器部署路径
     releaseDir: "web", //dist会解压成web

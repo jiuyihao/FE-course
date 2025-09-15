@@ -10,7 +10,7 @@ import path from "node:path";
 const main = async () => {
     const config = await commanderLine();
     const local = path.resolve(process.cwd(), config.targetFile)
-    // build(config.targetDir)
+    build(config.targetDir)
 
     await compressFile(config.targetDir, local)
     await server.connectServer(config)
